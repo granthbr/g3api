@@ -1,0 +1,28 @@
+#%RAML 0.8
+title: g3api
+version: 1.0
+baseUri: http://localhost:8081/{version}/
+
+/otm:
+  /unplanned_orders:
+    description: "this is how we're going to post unplanned orders"
+    post:
+      description: |
+        "this is where the orders get uploaded too"
+      body:
+        application/json:
+          example: !include schemas/otm_unplanned_order.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                { "200": "success" }
+    options:
+      description: |
+        "this is where the preflight config goes"
+      headers:
+        Access-Control-Allow-Origin:
+          default: "*"
+        Access-Control-Allow-Headers:
+          default: "Origin, Content-Type, X-Auth-Token"
